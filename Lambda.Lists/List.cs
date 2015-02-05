@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class List<T> where T : IComparable<T>, new()
+    public class List<T> : IList<T> where T : new()
     {
         public void Add(T item)
         {
@@ -63,6 +63,7 @@
                 {
                     throw new ArgumentOutOfRangeException();
                 }
+
                 return this.list[index];
             }
         }

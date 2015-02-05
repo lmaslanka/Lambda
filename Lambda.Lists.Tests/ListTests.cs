@@ -1,115 +1,101 @@
-﻿namespace Lambda.Lists.Tests
+﻿// ReSharper disable InconsistentNaming
+
+namespace Lambda.Lists.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     
     [TestClass]
     public class ListTests
     {
+        private const int TestItemOne = 1001;
+        private const int TestItemTwo = 1002;
+        private const int TestItemThree = 1003;
+
+        private IList<int> testList;
+        
+        [TestInitialize()]
+        public void Initialize()
+        {
+            this.testList = new List<int>();
+        }
+        
         [TestMethod]
-        public void NewListOfSizeZeroIsCreated()
+        public void New_CreateNewListOfSizeZero_ListIsCreated()
         {
             const int ExpectedListSize = 0;
-            List<int> testList = new List<int>();
 
-            Assert.AreEqual(ExpectedListSize, testList.Length);
+            Assert.AreEqual(ExpectedListSize, this.testList.Length);
         }
 
         [TestMethod]
-        public void AddTwoItemsListSizeIsTwo()
+        public void Add_AddTwoItems_ListSizeIsTwo()
         {
             const int ExpectedListSize = 2;
-            List<int> testList = new List<int>();
 
-            testList.Add(1001);
-            testList.Add(1002);
+            this.testList.Add(1001);
+            this.testList.Add(1002);
 
-            Assert.AreEqual(ExpectedListSize, testList.Length);
+            Assert.AreEqual(ExpectedListSize, this.testList.Length);
         }
 
         [TestMethod]
-        public void AddTwoItemsAccessTwoItemsFromList()
+        public void Indexer_AddTwoItems_AccessTwoItemsFromList()
         {
-            const int TestItemOne = 1001;
-            const int TestItemTwo = 1002;
-            List<int> testList = new List<int>();
+            this.testList.Add(TestItemOne);
+            this.testList.Add(TestItemTwo);
 
-            testList.Add(TestItemOne);
-            testList.Add(TestItemTwo);
-
-            Assert.AreEqual(TestItemOne, testList[0]);
-            Assert.AreEqual(TestItemTwo, testList[1]);
+            Assert.AreEqual(TestItemOne, this.testList[0]);
+            Assert.AreEqual(TestItemTwo, this.testList[1]);
         }
 
         [TestMethod]
-        public void AddTwoItemsRemoveFirstItemFromList()
+        public void RemoveAt_AddTwoItems_RemoveFirstItemFromList()
         {
-            const int TestItemOne = 1001;
-            const int TestItemTwo = 1002;
+            this.testList.Add(TestItemOne);
+            this.testList.Add(TestItemTwo);
 
-            List<int> testList = new List<int>();
-
-            testList.Add(TestItemOne);
-            testList.Add(TestItemTwo);
-
-            int item = testList.RemoveAt(0);
+            int item = this.testList.RemoveAt(0);
 
             Assert.AreEqual(TestItemOne, item);
-            Assert.AreEqual(1, testList.Length);
+            Assert.AreEqual(1, this.testList.Length);
         }
 
         [TestMethod]
-        public void AddThreeItemsRemoveSecondItemFromList()
+        public void RemoveAt_AddThreeItems_RemoveSecondItemFromList()
         {
-            const int TestItemOne = 1001;
-            const int TestItemTwo = 1002;
-            const int TestItemThree = 1003;
+            this.testList.Add(TestItemOne);
+            this.testList.Add(TestItemTwo);
+            this.testList.Add(TestItemThree);
 
-            List<int> testList = new List<int>();
-
-            testList.Add(TestItemOne);
-            testList.Add(TestItemTwo);
-            testList.Add(TestItemThree);
-
-            int item = testList.RemoveAt(1);
+            int item = this.testList.RemoveAt(1);
 
             Assert.AreEqual(TestItemTwo, item);
-            Assert.AreEqual(2, testList.Length);
+            Assert.AreEqual(2, this.testList.Length);
         }
 
         [TestMethod]
-        public void AddThreeItemsRemoveLastItemFromList()
+        public void RemoveAt_AddThreeItems_RemoveLastItemFromList()
         {
-            const int TestItemOne = 1001;
-            const int TestItemTwo = 1002;
-            const int TestItemThree = 1003;
+            this.testList.Add(TestItemOne);
+            this.testList.Add(TestItemTwo);
+            this.testList.Add(TestItemThree);
 
-            List<int> testList = new List<int>();
-
-            testList.Add(TestItemOne);
-            testList.Add(TestItemTwo);
-            testList.Add(TestItemThree);
-
-            int item = testList.RemoveAt(2);
+            int item = this.testList.RemoveAt(2);
 
             Assert.AreEqual(TestItemThree, item);
-            Assert.AreEqual(2, testList.Length);
+            Assert.AreEqual(2, this.testList.Length);
         }
 
         [TestMethod]
-        public void AddTwoItemsRemoveSpecificItemFromList()
+        public void Remove_AddTwoItems_RemoveSpecificItemFromList()
         {
-            const int TestItemOne = 1001;
-            const int TestItemTwo = 1002;
+            this.testList.Add(TestItemOne);
+            this.testList.Add(TestItemTwo);
 
-            List<int> testList = new List<int>();
-
-            testList.Add(TestItemOne);
-            testList.Add(TestItemTwo);
-
-            int item = testList.Remove(TestItemOne);
+            int item = this.testList.Remove(TestItemOne);
 
             Assert.AreEqual(TestItemOne, item);
-            Assert.AreEqual(1, testList.Length);
+            Assert.AreEqual(1, this.testList.Length);
         }
     }
 }

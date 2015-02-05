@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22310.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.Lists", "Lambda.Lists\Lambda.Lists.csproj", "{9E473968-723A-4254-BE32-774677BC1A7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.Lists.Tests", "Lambda.Lists.Tests\Lambda.Lists.Tests.csproj", "{4516042F-B429-4C38-902B-185BBA07DFE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.Patterns", "Lambda.Patterns\Lambda.Patterns.csproj", "{75DEE1E4-FAFD-41B6-AE97-EB730B76C42B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4516042F-B429-4C38-902B-185BBA07DFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4516042F-B429-4C38-902B-185BBA07DFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4516042F-B429-4C38-902B-185BBA07DFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75DEE1E4-FAFD-41B6-AE97-EB730B76C42B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75DEE1E4-FAFD-41B6-AE97-EB730B76C42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75DEE1E4-FAFD-41B6-AE97-EB730B76C42B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75DEE1E4-FAFD-41B6-AE97-EB730B76C42B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
