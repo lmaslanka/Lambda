@@ -110,20 +110,18 @@ namespace Lambda.Lists.Tests
             Assert.AreEqual(2, this.testList.Length);
         }
 
-
-        // TODO: There is something wrong here? Can you add nulls?
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException), "Cannot remove a null item.")]
-        public void Remove_RemoveNullItem_ArgumentNullException()
+        public void Remove_RemoveNullItem_NullItemRemoved()
         {
+            const int expectedNumberOfItemsAfterRemove = 1;
             object nullItemToRemove = null;
             
-            this.testNullableTypeList.Add(new Object());
-            this.testNullableTypeList.Add(new Object());
+            this.testNullableTypeList.Add(null);
+            this.testNullableTypeList.Add(null);
 
             object item = this.testNullableTypeList.Remove(nullItemToRemove);
 
-            Assert.IsTrue(true);
+            Assert.AreEqual(expectedNumberOfItemsAfterRemove, testNullableTypeList.Count);
         }
 
         [TestMethod]

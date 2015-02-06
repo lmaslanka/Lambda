@@ -58,11 +58,10 @@ namespace Lambda.Lists.Tests
             var testItems = new System.Collections.Generic.List<int> { TestItem1, TestItem2, TestItem3, TestItem4, TestItem5 };
             var testItemFalags = new bool[testItems.Count];
 
-            this.testBag.Add(TestItem1);
-            this.testBag.Add(TestItem2);
-            this.testBag.Add(TestItem3);
-            this.testBag.Add(TestItem4);
-            this.testBag.Add(TestItem5);
+            for (int i = 0; i < testItems.Count; i++)
+            {
+                this.testBag.Add(testItems[i]);                
+            }
 
             foreach (var item in this.testBag)
             {

@@ -20,11 +20,6 @@
 
         public T Remove(T item)
         {
-            if (item == null)
-            {
-                throw new ArgumentNullException();
-            }
-
             return this.RemoveAt(this.IndexOf(item));
         }
 
