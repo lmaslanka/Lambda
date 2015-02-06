@@ -1,6 +1,8 @@
 namespace Lambda.Lists
 {
-    public interface IList<T> where T : new()
+    using System.Collections.Generic;
+
+    public interface IList<T> : IEnumerable<T> where T : new()
     {
         void Add(T item);
         T Remove(T item);

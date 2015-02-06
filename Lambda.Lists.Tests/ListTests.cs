@@ -2,6 +2,8 @@
 
 namespace Lambda.Lists.Tests
 {
+    using System;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     
     [TestClass]
@@ -12,11 +14,13 @@ namespace Lambda.Lists.Tests
         private const int TestItemThree = 1003;
 
         private IList<int> testList;
+        private IList<Object> testNullableTypeList;
         
         [TestInitialize()]
         public void Initialize()
         {
             this.testList = new List<int>();
+            this.testNullableTypeList = new List<Object>();
         }
         
         [TestMethod]
@@ -46,6 +50,26 @@ namespace Lambda.Lists.Tests
 
             Assert.AreEqual(TestItemOne, this.testList[0]);
             Assert.AreEqual(TestItemTwo, this.testList[1]);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), "Cannot access index less than zero.")]
+        public void Indexer_AccessItemBelowLowerBound_InvalidArgumentException()
+        {
+            const int indexBelowLowerBound = -1;
+            this.testList.Add(TestItemOne);
+
+            Assert.AreEqual(TestItemOne, this.testList[indexBelowLowerBound]);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), "Cannot access index greater than number of items in the list.")]
+        public void Indexer_AccessItemAboveUpperBound_InvalidArgumentException()
+        {
+            const int indexAboveUpperBound = 10;
+            this.testList.Add(TestItemOne);
+
+            Assert.AreEqual(TestItemOne, this.testList[indexAboveUpperBound]);
         }
 
         [TestMethod]
@@ -84,6 +108,22 @@ namespace Lambda.Lists.Tests
 
             Assert.AreEqual(TestItemThree, item);
             Assert.AreEqual(2, this.testList.Length);
+        }
+
+
+        // TODO: There is something wrong here? Can you add nulls?
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), "Cannot remove a null item.")]
+        public void Remove_RemoveNullItem_ArgumentNullException()
+        {
+            object nullItemToRemove = null;
+            
+            this.testNullableTypeList.Add(new Object());
+            this.testNullableTypeList.Add(new Object());
+
+            object item = this.testNullableTypeList.Remove(nullItemToRemove);
+
+            Assert.IsTrue(true);
         }
 
         [TestMethod]
